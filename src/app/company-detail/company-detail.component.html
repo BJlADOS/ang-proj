@@ -1,0 +1,12 @@
+<div class="company-detail">
+    <div class="company-detail__logo">
+        <img [src]="company.logo" alt="company-logo">
+    </div>
+    <div class="company-detail__info">
+        <div class="company-detail__business_name">Название компании: {{company.business_name}}</div>
+        <div class="company-detail__industry">Индустрия: {{company.industry}}</div>
+        <div class="company-detail__catch_phrase">Слоган: {{company.catch_phrase}}</div>
+        <div class="company-detail__phone_number">Телефон: <a [href]="'tel:' + company.phone_number">{{company.phone_number}}</a></div>
+        <div class="company-detail__full_address">Адрес: {{company.full_address}}</div>
+    </div>
+</div>

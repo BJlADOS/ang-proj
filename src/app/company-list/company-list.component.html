@@ -1,0 +1,8 @@
+<div *ngFor="let company of companies" class="container">
+    <div *ngIf="company">
+        <app-company-item 
+        [company]="company"
+        >
+        </app-company-item>
+    </div>
+</div>

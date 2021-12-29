@@ -1,0 +1,27 @@
+.company-item {
+    display: flex;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    &__logo {
+        border-right: 1px solid #000;
+        padding: 10px;
+        & img {
+           height: 100px; 
+           width: 300px;
+           object-fit: cover;
+        }
+    }
+    &__info {
+        padding: 10px;
+        display: grid;
+        vertical-align: middle;
+    }
+}
+
+.company-item:hover {
+    opacity: 0.7;
+    background-color: rgb(228, 222, 222);
+}
