@@ -14,30 +14,13 @@ export class CompanyListComponent implements OnInit {
   constructor(
         private endPointRequestService: EndpointRequestService
   ) {
-    this.endPointRequestService.getCompanies().subscribe((item: companyItem[]): companyItem[] => {
-      this.companies = item;
-      this.sort();
-      return this.companies;
-    }); 
+    this.endPointRequestService.getCompanies().subscribe((item: companyItem[]): companyItem[] => this.companies = item); 
   }
 
   ngOnInit(): void {
   }
+
   sort() {
-    const select = document.getElementById('select') as any;
-    switch (select[select.selectedIndex].value) {
-      case 'Name': {
-        sortByName(this.companies);
-      break;
-      }
-      case 'Type': {
-        sortByType(this.companies);
-        break;
-        }
-      case 'Industry': {
-        sortByIndustry(this.companies);
-        break;
-        }
-      }
-    }
+    this.endPointRequestService.sort(this.companies);
+  }
 }
