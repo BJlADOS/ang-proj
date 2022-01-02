@@ -1,5 +1,5 @@
 <app-company-sort
-(sort)="sort()"
+(sort)="sort($event)"
 ></app-company-sort>
 <div *ngFor="let company of companies" class="container">
     <div *ngIf="company">
