@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { takeUntil, tap, Subject } from 'rxjs';
-import { companyItem } from '../company-item';
+import { companyItem, sortByIndustry, sortByName, sortByType } from '../company-item';
+import { CompanySortComponent } from '../company-sort/company-sort.component';
 import { EndpointRequestService } from '../endpoint-request.service';
-
 
 @Component({
     selector: 'app-company-list',
@@ -15,10 +14,30 @@ export class CompanyListComponent implements OnInit {
   constructor(
         private endPointRequestService: EndpointRequestService
   ) {
-    this.endPointRequestService.getCompanies().subscribe((item: companyItem[]): companyItem[] => this.companies = item);  
+    this.endPointRequestService.getCompanies().subscribe((item: companyItem[]): companyItem[] => {
+      this.companies = item;
+      this.sort();
+      return this.companies;
+    }); 
   }
 
   ngOnInit(): void {
   }
-
+  sort() {
+    const select = document.getElementById('select') as any;
+    switch (select[select.selectedIndex].value) {
+      case 'Name': {
+        sortByName(this.companies);
+      break;
+      }
+      case 'Type': {
+        sortByType(this.companies);
+        break;
+        }
+      case 'Industry': {
+        sortByIndustry(this.companies);
+        break;
+        }
+      }
+    }
 }

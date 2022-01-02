@@ -12,6 +12,7 @@ import { LayoutComponent } from './layout/layout.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompanyItemComponent } from './company-item/company-item.component';
+import { CompanySortComponent } from './company-sort/company-sort.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CompanyItemComponent } from './company-item/company-item.component';
     CompanyDetailComponent,
     CompanyYandexMapComponent,
     LayoutComponent,
-    CompanyItemComponent
+    CompanyItemComponent,
+    CompanySortComponent
   ],
   imports: [
     BrowserModule,
