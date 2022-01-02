@@ -9,7 +9,6 @@ import { companyItem, sortByIndustry, sortByName, sortByType } from './company-i
 })
 export class EndpointRequestService {
   private _takeUntill$: Subject<void> = new Subject<void>();
-
   constructor(
     private http: HttpClient
   ) {  
@@ -46,6 +45,5 @@ export class EndpointRequestService {
         break;
       }
     }
-    localStorage.setItem('companies', JSON.stringify(companies));
   }
 }

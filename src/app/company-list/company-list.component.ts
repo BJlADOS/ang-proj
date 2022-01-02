@@ -14,7 +14,11 @@ export class CompanyListComponent implements OnInit {
   constructor(
         private endPointRequestService: EndpointRequestService
   ) {
-    this.endPointRequestService.getCompanies().subscribe((item: companyItem[]): companyItem[] => this.companies = item); 
+    this.endPointRequestService.getCompanies().subscribe((item: companyItem[]): companyItem[] => {
+      this.companies = item;
+      this.sort();
+      return this.companies;
+    }); 
   }
 
   ngOnInit(): void {
