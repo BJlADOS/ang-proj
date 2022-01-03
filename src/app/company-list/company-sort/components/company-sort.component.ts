@@ -11,8 +11,8 @@ export class CompanySortComponent {
   constructor() { }
 
   changeValue(event: Event) {
-    const elemment = event.target as HTMLInputElement;
-    const value = elemment.value;
+    const element = event.target as HTMLInputElement;
+    const value = element.value;
     this.sort.emit(value);
   }
 }

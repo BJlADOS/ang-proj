@@ -14,19 +14,6 @@ router-outlet + * {
   padding: 0 16px;
 }
 
-h1 {
-  font-size: 32px;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-h1,
-h2 {
-  font-weight: lighter;
-}
-
 p {
   font-size: 14px;
 }
@@ -49,13 +36,7 @@ input {
   border: 1px solid #bdbdbd;
 }
 
-label {
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 4px;
-  display: block;
-  text-transform: uppercase;
-}
+
 
 .button,
 button {

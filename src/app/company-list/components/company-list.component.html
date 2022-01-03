@@ -1,6 +1,12 @@
-<app-company-sort
+<div class="sort-items"><app-company-sort
 (sort)="sort($event)"
+class="sort-items__item"
 ></app-company-sort>
+<app-company-filter
+(filterNotification)="filter($event)"
+class="sort-items__item"
+></app-company-filter>
+</div>
 <div *ngFor="let company of companies" class="container">
     <div *ngIf="company">
         <app-company-item 
@@ -9,3 +15,4 @@
         </app-company-item>
     </div>
 </div>
+<div *ngIf="companies.length === 0" class="container">Ничего не найдено:(</div>

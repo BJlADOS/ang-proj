@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { companyItem, sortByIndustry, sortByName, sortByType } from '../../company-item';
-import { CompanySortComponent } from '../company-sort/components/company-sort.component';
 import { EndpointRequestService } from '../../services/endpoint-request.service';
 
 @Component({
@@ -8,36 +7,45 @@ import { EndpointRequestService } from '../../services/endpoint-request.service'
     templateUrl: './company-list.component.html',
     styleUrls: ['../styles/company-list.component.scss']
 })
-export class CompanyListComponent implements OnInit {
+export class CompanyListComponent {
 
   public companies!: companyItem[];
+  public allCompanies!: companyItem[];
   constructor(
         private endPointRequestService: EndpointRequestService
   ) {
     this.endPointRequestService.getCompanies().subscribe((item: companyItem[]): companyItem[] => {
-      this.companies = item;
+      this.allCompanies = item;
+      this.filter({companyName: '', type: 'all', industry: 'all'});
       this.sort('Name');
       return this.companies;
     }); 
   }
 
-  ngOnInit(): void {
-  }
-
   sort(value: string) {
     switch (value) {
       case 'Name': {
-        sortByName(this.companies);
-      break;
+        this.companies = sortByName(this.companies);
+        this.allCompanies = sortByName(this.allCompanies);
+        break;
       }
       case 'Type': {
-        sortByType(this.companies);
+        this.companies = sortByType(this.companies);
+        this.allCompanies = sortByType(this.allCompanies);
         break;
       }
       case 'Industry': {
-        sortByIndustry(this.companies);
+        this.companies = sortByIndustry(this.companies);
+        this.allCompanies = sortByType(this.allCompanies);
         break;
       }
     }
+  }
+
+  filter(filter: {companyName: string, type: string, industry: string}) {
+    const namePredicate = new RegExp(filter.companyName, 'i');
+    this.companies = this.allCompanies.filter(company => namePredicate.test(company.business_name));
+    this.companies = this.companies.filter(company => filter.type === 'all'? true: company.type === filter.type);
+    this.companies = this.companies.filter(company => filter.industry === 'all'? true: company.industry === filter.industry);
   }
 }

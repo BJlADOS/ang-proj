@@ -3,3 +3,12 @@
     width: 95%;
     margin: 0 auto;
 }
+
+.sort-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+
+}

@@ -1,1 +1,25 @@
-<p>company-filter works!</p>
+<label class="filter-label">Фильтрация: </label>
+<form [formGroup]="filter" class="company-filter" (input)="notify($event)">
+
+    <div>
+    <label for="name" class="company-filter__label">Имя: </label>
+    <input type="text" formControlName="name" id="name">
+    </div>
+
+    <div>
+    <label for="type" class="company-filter__label">Тип: </label>
+    <select id="type" formControlName="type">
+        <option value="all" selected="true">Любой</option>
+        <option *ngFor="let type of types.sort()" [value]="type">{{type}}</option>
+    </select>
+    </div>
+
+    <div>
+    <label for="industry" class="company-filter__label">Род деятельности: </label>
+    <select id="industry" formControlName="industry">
+        <option value="all" selected="true">Любой</option>
+        <option *ngFor="let industry of industries.sort()" [value]="industry">{{industry}}</option>
+    </select>
+    </div>
+
+</form>
